@@ -1,2 +1,2 @@
-# data_structures_and_algorithm
+# data_structures_and_algorithms
 数据结构及相关算法的个人学习仓库
