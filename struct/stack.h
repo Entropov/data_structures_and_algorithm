@@ -1,13 +1,15 @@
 #include <stdio.h>
 #include <stdlib.h>
+#ifndef BOOL_H
+#define BOOL_H
+typedef enum{true = 1,false = 0}bool;//cpp关键字报错
+#endif
 #define MAX_SIZE 100//栈最大容量100
 typedef struct stack
 {
     int s[MAX_SIZE];
     int top;
 }stack;
-
-typedef enum{true = 1,false = 0}bool;//cpp关键字报错
 
 stack* init_stack()
 {
@@ -20,14 +22,14 @@ stack* init_stack()
 }
 
 /*判空*/
-bool empty(stack* stack)
+bool stack_empty(stack* stack)
 {
     return stack->top < 0 ? true:false;
 }
 /*返回栈顶元素*/
-int top(stack* stack)
+int topOfStack(stack* stack)
 {
-    if(empty(stack)){
+    if(stack_empty(stack)){
         printf("empty stack!\n");
         return 0;
     }else{
@@ -36,7 +38,7 @@ int top(stack* stack)
 }
 
 /*压栈*/
-void push(stack* stack, int x)
+void pushStack(stack* stack, int x)
 {
     if(stack->top+1 >= MAX_SIZE){
         printf("oversize!\n");
@@ -46,9 +48,9 @@ void push(stack* stack, int x)
 }
 
 /*出栈*/
-void pop(stack* stack)
+void popStack(stack* stack)
 {
-    if(empty(stack)){
+    if(stack_empty(stack)){
         printf("empty stack!\n");
     }else{
         stack->top--;
