@@ -1,5 +1,9 @@
 #include <stdio.h>
 #include <stdlib.h>
+#ifndef BOOL_H
+#define BOOL_H
+typedef enum{true = 1,false = 0}bool;//cpp关键字报错
+#endif
 #define dataType int
 
 /**
@@ -14,13 +18,11 @@
  */
 dataType testList[7] = {4,9,3,6,8,10,5};
 
-typedef enum{true = 1,false = 0}bool;//cpp关键字报错
-
-typedef struct node
+typedef struct tree_node
 {
     dataType value;
-    struct node *left;
-    struct node *right;
+    struct tree_node *left;
+    struct tree_node *right;
 } binaryNode;
 
 binaryNode *init_binaryTree()
