@@ -5,6 +5,7 @@ typedef char dataType;
 typedef struct arcNode
 {
     int adjVex;
+    int weight;
     struct arcNode *next;
 }edge;
 
@@ -20,6 +21,7 @@ void addEdge(int vex1, int vex2, adjList list)
         if(!list[vex1].firstEdge){
             list[vex1].firstEdge = (edge*)malloc(sizeof(edge));
             list[vex1].firstEdge->adjVex = vex2;
+            list[vex1].firstEdge->weight = 1;//可达
             list[vex1].firstEdge->next = NULL;
         }else{
             edge* e = list[vex1].firstEdge;
@@ -29,6 +31,7 @@ void addEdge(int vex1, int vex2, adjList list)
             }
             e->next = (edge*)malloc(sizeof(edge));
             e->next->adjVex = vex2;
+            e->next->weight = 1;
             e->next->next = NULL;
         }
 }
@@ -48,6 +51,7 @@ adjNode* init_adjList(int edgeNum, int vexNum)
 
         }else if(input == '2'){
             for(int i = 0; i < vexNum; i++){
+                fflush(stdin);
                 printf("plz input(vex):\n");
                 list[i].vex = getchar();
                 list[i].firstEdge = NULL;
